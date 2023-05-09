@@ -1,0 +1,7 @@
+#+title: Bjoernerlwein.de
+
+Hello there, no  idea how or why you got here but maybe have a look at these random ramblings:
+
+* Posts
+#+include: posts/index.org
+

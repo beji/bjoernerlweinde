@@ -1,0 +1,10 @@
+#+TITLE: Sitemap for project bde-root
+
+- [[file:index.org][Bjoernerlwein.de]]
+- [[file:demo.org][Demo]]
+- [[file:imprint.org][Imprint]]
+- posts
+  - [[file:posts/migration-from-portage-to-paludis.org][Migration From Portage To Paludis]]
+  - [[file:posts/portage2paludis-and-the-repositoires.org][Portage2paludis And The Repositoires]]
+  - [[file:posts/publishing-a-website-with-emacs-and-org.org][Publishing A Website With Emacs And Org]]
+  - [[file:posts/index.org][index]]

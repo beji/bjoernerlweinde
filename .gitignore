@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+
+public
+
+.envrc
+.direnv
+http-server
+out
+default.css

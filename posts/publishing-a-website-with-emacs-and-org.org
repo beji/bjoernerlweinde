@@ -1,0 +1,38 @@
+#+title: Publishing A Website With Emacs And Org
+#+subtitle: Bad ideas can eat a lot of time
+#+date: <2023-05-09 Di>
+
+* Why?
+To be honest, I'm not quite sure why I thought this would be a good idea. Something like [[https://gohugo.io/][Hugo]] seems to be the obvious choice.
+But I already use Emacs for everything else so why not.
+Hugo also does a lot more than I need (which, let's be honest, is basically nothing) so I'd have to read a lot of documentation on how to *not* use things.
+
+Emacs provides a mechanism to generate a HTML page from org files with [[https://orgmode.org/manual/Publishing.html][ox-publish]]. It's not overly user friendly or all that well documented but you can mostly get it to work, if the use case is rather simple.
+
+* How does this work?
+
+Most of the magic lies in =publish.el=, as outlined here:
+
+#+name: publish.el
+#+include: ../publish.el src emacs-lisp
+
+The project is then "built" with a small Makefile:
+
+#+name: Makefile
+#+include: ../Makefile src makefile
+
+Everything is then packed up in a [[https://www.docker.com][Docker]] container with [[https://httpd.apache.org/][Apache]].
+
+#+name: Dockerfile
+#+include: ../Dockerfile src dockerfile
+
+* Things I learned from doing this
+
+** This is really (really) slow without native-comp
+My initial =publish.el= didn't use the packages from straight and also didn't use the [[https://www.emacswiki.org/emacs/GccEmacs][native-comp]] feature of Emacs.
+This almost made me abort everything as publishing these few pages already took a minute.
+Using my [[https://github.com/radian-software/straight.el][straight.el]] setup provided by [[https://github.com/doomemacs/doomemacs][Doom Emacs]] sped the process up to sub 1 second, which is really nice.
+
+** The org cache can be quite annoying
+Org tries to be helpful and caches processed files to avoid doing useless work, which makes sense considering the previous point.
+This seems to be a simple timestamp based process, similar to how =make= handles things. Which would be fine in theory but it doesn't consider changes to something like the html-head or the preamble, which is really annoying while trying to assemble a somewhat working site out of all this.
