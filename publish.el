@@ -13,7 +13,6 @@
 (require 'ox-publish)
 
 (setq user-full-name "Björn Erlwein")
-(setq user-mail-address "bjoern (at) bjoernerlwein.de")
 
 (defun bde/get-content (x)
   "Returns the contents of a file as a string"
