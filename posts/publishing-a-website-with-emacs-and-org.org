@@ -1,4 +1,4 @@
-#+title: Publishing A Website With Emacs And Org
+#+title: Publishing a website with Emacs and Org
 #+subtitle: Bad ideas can eat a lot of time
 #+date: <2023-05-09 Di>
 
