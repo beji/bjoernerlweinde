@@ -29,7 +29,7 @@ http-server:
 	chmod +x @
 
 publish:
-	rsync -av ./public webserver:/opt/bde
+	rsync -rauLv ./public webserver:/opt/bde
 
 clean:
 	-rm -rf public
