@@ -1,6 +1,6 @@
 :root {
-    --light: #eee;
-    --dark: #333;
+    --light: #ECEFF4;
+    --dark: #2E3440;
     --basefont: system-ui, sans-serif;
     --textfont: serif;
     --codefont: ui-monospace, monospace;
@@ -56,6 +56,18 @@ main#content {
       &.src-dockerfile:before{
           content: "Dockerfile";
       }
+  }
+}
+
+#footnotes {
+  border-top: 1px solid var(--dark);
+  .footdef {
+    sup, div {
+      display: inline-block;
+    }
+    sup:after {
+      content: ": ";
+    }
   }
 }
 
@@ -116,4 +128,7 @@ header nav {
             border-color: var(--light);
         }
     }
+  #footnotes {
+    border-color: var(--light);
+  }
 }

@@ -1,0 +1,50 @@
+#+title: Why I used Gentoo and why I stopped
+#+subtitle: And moved to NixOs
+#+date: <2023-05-19 Fr>
+
+I used [[https://www.gentoo.org][Gentoo Linux]] for well over a decade and have some spare time on my hand, so why not waste it by writing about Gentoo a bit?
+
+* Why did I start running Gentoo
+
+I figured that learning how to use Linux might be a wise decision[fn:: one of my brighter moments] and set up [[https://ubuntu.com/][Ubuntu]], can't remember if I started out with a VM or a
+full install.
+The whole process was rather simple and got me a working Desktop to dick around in but I didn't really learn anything from doing that. People back then recommended [[https://www.linuxfromscratch.org/][Linux From Scratch (LFS)]] but that doesn't really result in a usable system[fn:: you know, with packages and everything] so I used the next best thing, which was Gentoo.
+I opened the [[https://wiki.gentoo.org/wiki/Handbook:AMD64][Gentoo Handbook]] on a Laptop[fn:: I made the mistake to install from a [[https://www.gentoo.org/downloads/][Stage 3 ISO]], just use Fedora or something] and worked through it.
+The first install probably took a day or something, later tries took something like an hour[fn:: It gets significantly easier once you know what you are doing], I spend at least another day trying to figure out why my mouse wasn't working until I found the correct kernel module I was missing[fn:: Just use [[https://wiki.gentoo.org/wiki/Genkernel][Genkernel]] or something].
+
+* Things I like about Gentoo
+
+I used it a long time so there is obviously something positive about it.
+
+** You can learn a lot about how Linux Systems tend to work
+
+Gentoo forces you to spend time with the various parts that make up a typical Linux distribution, like the [[https://wiki.gentoo.org/wiki/Kernel][Kernel]] and [[https://wiki.gentoo.org/wiki/Xorg][Xorg]], as you have to configure them and somethimes have to make decisions about them, for example about [[https://wiki.gentoo.org/wiki/Systemd][systemd]] or [[https://wiki.gentoo.org/wiki/OpenRC][OpenRC]]. It served my original goal quite well.
+
+** It is quite simple
+
+Gentoo doesn't really introduce a lot of tools/concepts so one can really get a decent grasp of how to work it in a reasonable timeframe
+
+** Gentoo is great for customization
+
+The base system doesn't really contain anything but the [[https://wiki.gentoo.org/wiki/Project:Portage][package manager]] so it is really simple to build a system that just contains the things one actually uses[fn:: don't install anything else and you are good to go]. Packages can be further customized with the (in)famous [[https://wiki.gentoo.org/wiki/USE_flag][USE flags]]. Don't have any bluetooth hardware? Disable the USE flag and your system won't install anything for it. Doesn't really make much of a difference in practice but it is nice.
+
+** Writing packages is easy
+
+The [[https://gitweb.gentoo.org/repo/gentoo.git/tree/][official package repo]] contains a lot but not everything. Which isn't much of a problem, really, as it is really easy to use [[https://wiki.gentoo.org/wiki/Ebuild_repository][overlays]] from other people or just have a local directory somewhere with your own packages. Actually [[https://wiki.gentoo.org/wiki/Ebuild][writing packages]] is pretty straightforward, a lot of projects use [[https://www.gnu.org/software/make/][Make]] with a standard setup and that means you just have to point to the sourcecode and list the dependencies.
+
+** You get to feel like a hacker
+
+At least for the first few weeks/months. It felt cool to install something and see nonsense fly over the terminal while the compiler was doing it's job.
+
+* So, what's not so great about it, then?
+
+It essentially comes down to one thing: *Compiling everything takes time*. Modern hardware kind of softens that problem for a lot of packages but I always dreaded the next [[https://packages.gentoo.org/packages/net-libs/webkit-gtk][webkit-gtk]] rebuild because a dependency changed or something and now the system upgrade took an hour or something. Gentoo even bundles prebuilt =-bin= packages for the worst offenders[fn:: Looking at you, [[https://wiki.gentoo.org/wiki/Chromium][Chromium]]].
+
+* My way away from Gentoo
+
+I didn't really just decide to move on, it was a more gradual thing. At some point I took note of The [[https://en.wikipedia.org/wiki/Nix_(package_manager)][NixOs package manager (Nix)]], especially the whole thing about [[https://nixos.wiki/wiki/Flakes][Flakes]] and the corresponding [[https://direnv.net/][direnv]] integration. Essentially this allows a setup where you =cd= into the directory of a project and your system will automatically provide all the packages you need to run/build/whatever the project, no matter what the surrounding system actually has installed.
+This worked really well after I figured out how the hell this worked[fn:: "figured out" is a strong term, I still don't really have any idea how all of this works and I run NixOs for like a year now]. I then discovered [[https://nix-community.github.io/home-manager/][home-manager]] as a really nice way to handle dotfiles, so I started using that as well.
+
+At some point I wished I could manage more of my system the simple configuration approach Nix offers. Essentially you write a nix config and the package manager then figures out how to install/configure everything. Seemed like a good idea and that is exactly what [[https://nixos.org/][NixOs]] offers, so ultimately decided to give it a go.
+
+I don't really regret the move, even if I fondly look back at Gentoo. Might be somewhat nostalgia influenced[fn:: Imagine being nostalgic about a linux distro...].

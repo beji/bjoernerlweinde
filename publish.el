@@ -1,13 +1,13 @@
 ;; load up straight
 ;; the directory was already created by doom-emacs, might not fit for other setups
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name ".local/straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 6))
-  (load bootstrap-file nil 'nomessage))
+;; (defvar bootstrap-version)
+;; (let ((bootstrap-file
+;;        (expand-file-name ".local/straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;;       (bootstrap-version 6))
+;;   (load bootstrap-file nil 'nomessage))
 
-;; TODO: doom-emacs should have installed this, no idea why this is necessary
-(straight-use-package 'htmlize)
+;; ;; TODO: doom-emacs should have installed this, no idea why this is necessary
+;; (straight-use-package 'htmlize)
 
 (require 'org)
 (require 'ox-publish)

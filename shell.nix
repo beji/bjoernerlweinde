@@ -7,5 +7,6 @@ mkShell {
     sassc
     zip
     podman
+    rsync
   ];
 }

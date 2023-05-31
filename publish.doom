@@ -1,0 +1,5 @@
+#!/usr/bin/env doomscript
+
+(require 'doom-start)
+(load! "publish.el")
+(org-publish-all)

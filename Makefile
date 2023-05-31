@@ -15,7 +15,7 @@ public/style.css: style.scss
 	sassc $< $@
 
 public/index.html: public/style.css $(STATIC_OUT_FILES) $(SITE_FILES) publish.el
-	emacs --batch --load publish.el --funcall org-publish-all
+	./publish.doom
 
 ##############################
 # This is for the dev server #
@@ -28,15 +28,8 @@ http-server:
 	curl -L https://github.com/TheWaWaR/simple-http-server/releases/download/v$(DEVSERVER_VERSION)/x86_64-unknown-linux-musl-simple-http-server -o $@
 	chmod +x @
 
-out/container.tar.gz: all
-	mkdir -p $(dir $@)
-	podman build -t bjoernerlweinde:$(IMAGE_VERSION) .
-	podman save -o $(basename $@) bjoernerlweinde:$(IMAGE_VERSION)
-	gzip -f $(basename $@)
-
-publish: out/container.tar.gz
-	scp $< webserver:/opt/$(notdir $<)
-	ssh webserver 'cd /opt && rm -rf container.tar && gunzip ./$(notdir $<) && podman load -i ./$(basename $(notdir $<))'
+publish:
+	rsync -av ./public webserver:/opt/bde
 
 clean:
 	-rm -rf public
