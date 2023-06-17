@@ -1,0 +1,15 @@
+#+title: Trying the US-Intl keyboard layout
+#+date:<2023-06-17 Sa>
+
+So, yeah, trying to learn a new keyboard layout, apparently my (non-existent) hobbies aren't boring enough yet.
+
+I used a german keyboard layout for most of my life and while it works great for typing german text, it doesn't fare so well when programming or trying to use a CLI. These tasks use a lot of special characters like =/=, which would be =SHIFT+7= for german.
+This is mostly workable but can get annoying when using something like vim, or tools that have vim-like keybinds[fn:: like my emacs setup].
+
+Another pain point is that I use a mac laptop at work and for some reason some special characters, like =(= and =[=, are shifted from the "regular" layout windows/linux use.
+
+So, I gave up and decided to give a US layout a choice. I decided to go with the [[https://dry.sailingissues.com/us-international-keyboard-layout.html][US International layout]] as that still allows umlauts[fn:: Now that I kind of have to think about how to type them I realize how often they are actually used].
+
+Biggest pain right now? Obviously the switched =y and z=[fn:: on the plus side, a lot of shortcuts now make way more sense than before].
+
+It does work better than I thought it would, maybe I will actually stick with it. Time will tell.
